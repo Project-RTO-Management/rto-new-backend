@@ -47,6 +47,9 @@ public class VehicleRegistration extends BaseEntity{
 	
 	@Column(length=50,nullable = false)
 	private String VehicalModel;
+	
+	@Column(length = 20, unique = true,name="new_registration_no")
+	private String newRegistrationNo;
 
 	@ManyToOne
 	@JoinColumn(name="user_id", nullable = false)
@@ -58,4 +61,36 @@ public class VehicleRegistration extends BaseEntity{
 //		this.user=(User) attribute;
 //		
 //	}
+	
+	public void setRegistrationNo(String registrationNo) {
+		this.registrationNo = registrationNo;
+	}
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+	public void setDateOfAppl(Timestamp dateOfAppl) {
+		this.dateOfAppl = dateOfAppl;
+	}
+	public void setPurchaseDate(LocalDate purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+	public void setVehicalCompany(String vehicalCompany) {
+		VehicalCompany = vehicalCompany;
+	}
+	public void setNumberPlate(String numberPlate) {
+		this.numberPlate = numberPlate;
+	}
+	public void setVehicalModel(String vehicalModel) {
+		VehicalModel = vehicalModel;
+	}
+	public void setNewRegistrationNo(String newRegistrationNo) {
+		System.out.println("inside setNewRegistrationNo");
+		this.newRegistrationNo = newRegistrationNo;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
 }

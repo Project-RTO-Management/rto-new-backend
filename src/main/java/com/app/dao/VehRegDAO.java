@@ -8,4 +8,5 @@ import com.app.entities.VehicleRegistration;
 
 public interface VehRegDAO extends  JpaRepository<VehicleRegistration, Long>{
 
+	VehicleRegistration findByRegistrationNo(String registrationNo);
 }
