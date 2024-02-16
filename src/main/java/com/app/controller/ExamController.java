@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/exam")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin()
 @Validated
 public class ExamController {
 
