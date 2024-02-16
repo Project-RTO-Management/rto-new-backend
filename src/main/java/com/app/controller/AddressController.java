@@ -18,7 +18,7 @@ import com.app.service.AddressService;
 
 @RestController
 @RequestMapping("/address")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin()
 @Validated
 public class AddressController {
 	

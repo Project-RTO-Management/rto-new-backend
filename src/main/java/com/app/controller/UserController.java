@@ -25,7 +25,7 @@ import com.app.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:5174")//----> vite+ react app
+@CrossOrigin()//----> vite+ react app
 @Validated
 public class UserController {
     @Autowired
@@ -46,7 +46,7 @@ public class UserController {
     }
     
 	@PostMapping("/login")
-	public String processLoginForm(@RequestParam String em,
+	public ResponseEntity<String> processLoginForm(@RequestParam String em,
 			@RequestParam String pass, Model map, HttpSession session) {
 		System.out.println("in process login form " + em + " " + pass);// em pass : not null
 		try {
@@ -58,15 +58,15 @@ public class UserController {
 			// role based authorization
 			if (user.getRole() == Role.APPLICANT) {
 				// user role , redirect to user details
-				return user.getUserName();
+				return ResponseEntity.ok(user.getId()+","+user.getUserName());
 			}
 			// => admin, trafficpolice role --redirect to dept list page
-			return "redirect:/users/list";
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 		} catch (Exception e) {
 			System.out.println("err in handler " + e);
 			// forward clnt in the same request to the login page , highlighted with errs
 			map.addAttribute("message", "Invalid Email or Passsword!!!");
-			return "/login";
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("message");
 		}
 
 	}

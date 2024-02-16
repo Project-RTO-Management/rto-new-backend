@@ -95,14 +95,14 @@ public UserDao userDao;
 		public String generateRegistrationNoNew(Long userId,VehRegRenewDTO vehNewDto) {
 			VehicleRegistration veh=mapper.map(vehNewDto, VehicleRegistration.class);
 			System.out.println(veh.getRegistrationNo());
-			User user = userdao.findById(userId).orElseThrow(()->new NoSuchElementException("user cant fetch"));
+//			User user = userdao.findById(userId).orElseThrow(()->new NoSuchElementException("user cant fetch"));
 			
 			
 			//System.out.println(veh.getRegistrationNo().toString().equals(vehical.getRegistrationNo().toString()));
 			
 			
 			veh=dao.findByRegistrationNo(veh.getRegistrationNo());
-			veh.setUser(user);
+//			veh.setUser(user);
 			String newRegNo=this.generateRegistrationNumber();
 			System.out.println(newRegNo);
 			veh.setNewRegistrationNo(newRegNo);
