@@ -25,7 +25,7 @@ import com.app.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:5173")//----> vite+ react app
+@CrossOrigin(origins = "http://localhost:5174")//----> vite+ react app
 @Validated
 public class UserController {
     @Autowired
@@ -58,7 +58,7 @@ public class UserController {
 			// role based authorization
 			if (user.getRole() == Role.APPLICANT) {
 				// user role , redirect to user details
-				return "redirect:/users/home";
+				return user.getUserName();
 			}
 			// => admin, trafficpolice role --redirect to dept list page
 			return "redirect:/users/list";
