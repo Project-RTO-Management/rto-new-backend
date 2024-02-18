@@ -52,7 +52,7 @@ public class UserController {
 		try {
 			// invoke service layer method for authentication
 			User user = userService.authenticateUser(em, pass);
-			System.out.println(user);
+//			System.out.println(user);
 			// add validated user details under session scope
 			session.setAttribute("user_details", user);
 			// role based authorization
