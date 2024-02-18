@@ -12,6 +12,8 @@ public interface LicenseService{
 	String applyForParmanentLicense(@NotNull(message = "Learning license can not be null") Long userId,
 			PermanentLicenseDTO perdto);
 
+	String getPermanentLicNo(@NotNull(message = "Learning license can not be null") Long userId);
+
 
 
 }

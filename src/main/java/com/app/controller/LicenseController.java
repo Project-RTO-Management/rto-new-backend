@@ -44,18 +44,10 @@ public ResponseEntity<?> applyForPermanent(@PathVariable @NotNull(message = "Lea
 	return ResponseEntity.status(HttpStatus.CREATED).body(service.applyForParmanentLicense(userId,perdto));
 }
 
-//	@PostMapping("/applyLearningLicense")
-//	public  ResponseEntity<License> newApplyLearningLicense(@RequestBody LicenseDTO  licenseDto, HttpSession session) {
-//		
-//		 //Take input data from user page like vehicle and license type and user id  in LicenseDto
-//
-//		License license=licenseService.addLicense(licenseDto);  
-//		System.out.println("userId : "+license);
-//		
-//		
-//		
-//		return new ResponseEntity<>(license, HttpStatus.CREATED);
-//	}
+@PostMapping("/licenseno/{userId}")
+public ResponseEntity<?> getPermanentLicenseNo(@PathVariable @NotNull(message = "Learning license can not be null") Long userId){
+	return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.getPermanentLicNo(userId));
 	
 
+}
 }

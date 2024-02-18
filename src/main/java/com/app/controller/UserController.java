@@ -61,7 +61,8 @@ public class UserController {
 				return ResponseEntity.ok(user.getId()+","+user.getUserName());
 			}
 			// => admin, trafficpolice role --redirect to dept list page
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+			return user.getUserName();
+
 		} catch (Exception e) {
 			System.out.println("err in handler " + e);
 			// forward clnt in the same request to the login page , highlighted with errs
