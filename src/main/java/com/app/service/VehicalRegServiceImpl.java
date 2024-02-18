@@ -92,7 +92,7 @@ public UserDao userDao;
 		}
 
 		//Renew Regiseteration
-		public String generateRegistrationNoNew(Long userId,VehRegRenewDTO vehNewDto) {
+		public VehRegRenewDTO generateRegistrationNoNew(Long userId,VehRegRenewDTO vehNewDto) {
 			VehicleRegistration veh=mapper.map(vehNewDto, VehicleRegistration.class);
 			System.out.println(veh.getRegistrationNo());
 //			User user = userdao.findById(userId).orElseThrow(()->new NoSuchElementException("user cant fetch"));
@@ -106,10 +106,10 @@ public UserDao userDao;
 			String newRegNo=this.generateRegistrationNumber();
 			System.out.println(newRegNo);
 			veh.setNewRegistrationNo(newRegNo);
-			dao.save(veh);
 			
-			return "Your vehical registeration number renewed successfully";
-			//return  mapper.map(dao.save(veh), VehRegRenewDTO.class);
+			
+//			return "Your vehical registeration number renewed successfully";
+			return  mapper.map(dao.save(veh), VehRegRenewDTO.class);
 		}
 
 
