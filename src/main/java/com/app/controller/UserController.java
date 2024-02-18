@@ -25,7 +25,7 @@ import com.app.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:5174")//----> vite+ react app
+@CrossOrigin(origins = "http://localhost:3000")//----> vite+ react app
 @Validated
 public class UserController {
     @Autowired
@@ -61,7 +61,7 @@ public class UserController {
 				return user.getUserName();
 			}
 			// => admin, trafficpolice role --redirect to dept list page
-			return "redirect:/users/list";
+			return user.getUserName();
 		} catch (Exception e) {
 			System.out.println("err in handler " + e);
 			// forward clnt in the same request to the login page , highlighted with errs
