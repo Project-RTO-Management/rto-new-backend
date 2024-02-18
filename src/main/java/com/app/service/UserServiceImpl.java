@@ -26,7 +26,9 @@ private ModelMapper mapper;
 @Override
 public User authenticateUser(String em, String pass) {
 
-	return  userDao.findByEmailAndPassword(em, pass).orElseThrow();
+	User u=  userDao.findByEmailAndPassword(em, pass).orElseThrow();
+	System.out.println(u);
+	return u;
 	
 	
 }

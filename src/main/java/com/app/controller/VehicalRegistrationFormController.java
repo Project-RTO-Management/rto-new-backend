@@ -20,7 +20,7 @@ import com.app.service.vehicalRegService;
 
 @RestController
 @RequestMapping("/vehicalRegistration")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin()
 @Validated
 public class VehicalRegistrationFormController{
 	
@@ -32,6 +32,7 @@ public class VehicalRegistrationFormController{
 	 @PostMapping("/vehReg/{userId}")
 	public ResponseEntity<?> vehGenerator(@PathVariable @NotNull(message = "Id can not be null") Long userId, @RequestBody VehRegDTO vehregdto)
 	{
+		 System.out.println(vehregdto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.generateRegistrationNo(vehregdto,userId));
 	}
 	 
