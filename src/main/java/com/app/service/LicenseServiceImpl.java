@@ -130,9 +130,22 @@ public class LicenseServiceImpl implements LicenseService {
 	@Override
 	public String getPermanentLicNo(@NotNull(message = "Learning license can not be null") Long userId) {
 		License lic= licdao.findByUserId(userId);
-		if(lic.getApprove().equalsIgnoreCase("Approved"))
-		return lic.getLicenseNo();
-		return "Your Application for PermanentLicense is still pending" ;
+//		if(lic.getApprove().equalsIgnoreCase("Approved"))
+//			return lic.getLicenseNo();
+//		else
+//		return "Your Application for PermanentLicense is still pending" ;
+		
+		 if (lic != null) {
+		        String approvalStatus = lic.getApprove();
+		        if ("Approved".equalsIgnoreCase(approvalStatus)) 
+		            return lic.getLicenseNo();
+		        else if ("Rejected".equalsIgnoreCase(approvalStatus)) 
+		            return "Your application for a Permanent License has been rejected";
+		        else 
+		            return "Your application for a Permanent License is still pending";
+		    }
+	     else 
+		        return "No license found for the given user ID";
 	}
 
 }

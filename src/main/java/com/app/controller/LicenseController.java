@@ -24,7 +24,7 @@ import com.app.service.LicenseService;
 
 @RestController
 @RequestMapping("/License")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 @Validated
 public class LicenseController {
 
