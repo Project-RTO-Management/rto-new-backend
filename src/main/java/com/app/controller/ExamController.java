@@ -25,13 +25,12 @@ public class ExamController {
 	private ExamService examService;
 
 	@GetMapping("/{userID}")
-	public ResponseEntity<?> getLicenseIdById(@PathVariable Long userID,@RequestBody String license) {
-
-		return ResponseEntity.status(HttpStatus.OK).body(examService.applyForExam(userID,license)) ;
+	public ResponseEntity<?> getLicenseIdById(@PathVariable Long userID) {
+ 			return ResponseEntity.status(HttpStatus.OK).body(examService.applyForExam(userID));
 	}
 
 	
-	@PostMapping("/test")
+	@GetMapping("/test")
 	public ResponseEntity<?> getExamQue(){
 		return ResponseEntity.status(HttpStatus.OK).body(examService.getExamQueSet());
 		

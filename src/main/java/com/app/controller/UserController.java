@@ -58,10 +58,10 @@ public class UserController {
 			// role based authorization
 			if (user.getRole() == Role.APPLICANT) {
 				// user role , redirect to user details
-				return ResponseEntity.ok(user.getId()+","+user.getUserName());
+				return ResponseEntity.ok(user.getId()+","+user.getUserName()+","+user.getRole());
 			}
 			// => admin, trafficpolice role --redirect to dept list page
-			return ResponseEntity.ok(user.getId()+","+user.getUserName());
+			return ResponseEntity.ok(user.getId()+","+user.getUserName()+","+user.getRole());
 
 		} catch (Exception e) {
 			System.out.println("err in handler " + e);

@@ -7,7 +7,7 @@ import com.app.entities.ExamData;
 
 public interface ExamService {
 		
-	String applyForExam(Long userId,String license);
+	String applyForExam(Long userId);
 
 	Set<ExamDataDto> getExamQueSet();
 }

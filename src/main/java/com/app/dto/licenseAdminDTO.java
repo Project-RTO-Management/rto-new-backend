@@ -18,7 +18,7 @@ import lombok.Setter;
 import lombok.ToString;
 @Getter
 @Setter
-@ToString
+//@ToString
 @Component
 public class licenseAdminDTO {
 	@JsonProperty(access = Access.READ_ONLY) // used during serialization ->skip it in deserial

@@ -7,7 +7,7 @@ import com.app.dto.PermanentLicenseDTO;
 
 public interface LicenseService{
 
-	String generateLearningLicenseNo( @NotNull(message = "Id can not be null") Long userId,LicenseDTO licdto);
+	LicenseDTO generateLearningLicenseNo( @NotNull(message = "Id can not be null") Long userId,LicenseDTO licdto);
 
 	String applyForParmanentLicense(@NotNull(message = "Learning license can not be null") Long userId,
 			PermanentLicenseDTO perdto);
