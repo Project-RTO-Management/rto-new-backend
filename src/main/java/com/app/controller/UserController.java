@@ -46,7 +46,7 @@ public class UserController {
     }
     
 	@PostMapping("/login")
-	public ResponseEntity<String> processLoginForm(@RequestParam String em,
+	public ResponseEntity<?> processLoginForm(@RequestParam String em,
 			@RequestParam String pass, Model map, HttpSession session) {
 		System.out.println("in process login form " + em + " " + pass);// em pass : not null
 		try {
@@ -61,7 +61,7 @@ public class UserController {
 				return ResponseEntity.ok(user.getId()+","+user.getUserName());
 			}
 			// => admin, trafficpolice role --redirect to dept list page
-			return user.getUserName();
+			return ResponseEntity.ok(user.getId()+","+user.getUserName());
 
 		} catch (Exception e) {
 			System.out.println("err in handler " + e);
