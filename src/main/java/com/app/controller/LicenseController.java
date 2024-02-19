@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.LicenseDTO;
+import com.app.dto.LicenseRenewDto;
 import com.app.dto.PermanentLicenseDTO;
+import com.app.dto.VehRegRenewDTO;
+import com.app.service.LicenseRenewService;
 import com.app.service.LicenseService;
 
 
@@ -31,6 +34,9 @@ public class LicenseController {
 
 @Autowired
 private LicenseService service;
+
+@Autowired
+private LicenseRenewService renewService;
 
 @PostMapping("/learning/{userId}")
 	public ResponseEntity<?> applyForLearning( @PathVariable @NotNull(message = "Id can not be null") Long userId,@RequestBody LicenseDTO licdto)
@@ -48,6 +54,18 @@ public ResponseEntity<?> applyForPermanent(@PathVariable @NotNull(message = "Lea
 public ResponseEntity<?> getPermanentLicenseNo(@PathVariable @NotNull(message = "Learning license can not be null") Long userId){
 	return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.getPermanentLicNo(userId));
 	
+	
+
 
 }
+
+
+
+@PostMapping("/renewLicense/{userId}")
+public ResponseEntity<?> LicenseRenew(@PathVariable Long userId,@RequestBody LicenseRenewDto licenseRenewDto)
+	{
+	
+		return ResponseEntity.status(HttpStatus.CREATED).body(renewService.LicenseRenew(userId, licenseRenewDto));
+		
+	}
 }
