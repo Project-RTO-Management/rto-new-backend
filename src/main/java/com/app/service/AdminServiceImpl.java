@@ -95,6 +95,7 @@ private ModelMapper mapper;
 	public String rejectLic(Long licId) {
 		License license =licdao.findById(licId).orElseThrow(() -> new NoSuchElementException());
 		license.setApprove("Rejected");
+		license.setLicenseNo("null");
 		licdao.save(license);
 		return "Application for Permanent License is Rejected";
 	}
