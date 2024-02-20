@@ -25,7 +25,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(callSuper = true)
+
 
 public class User extends BaseEntity{
 	@Column(length = 20,nullable = false)
