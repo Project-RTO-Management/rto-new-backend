@@ -27,15 +27,12 @@ public class ExamServiceImpl implements ExamService {
 	private ModelMapper mapper;
 
 	@Override
-	public String applyForExam(Long userId, String license) {
-		System.out.println(license);
-		LearningLicenseRegister lic = licensedao.findByUserId(userId)
+	public String applyForExam(Long userId) {
+			LearningLicenseRegister lic = licensedao.findByUserId(userId)
 				.orElseThrow(() -> new NoSuchElementException());
 		System.out.println(lic.getLearningLicenseNo());
-		if(license.equalsIgnoreCase(lic.getLearningLicenseNo()))
-			return "Valid,Start exam";
-		else
-			return "Invalid License No.";
+	
+			return "You can start exam.";
 	}
 
 	@Override

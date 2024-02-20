@@ -69,7 +69,7 @@ public class LicenseServiceImpl implements LicenseService {
   		
   		
 	@Override
-	public String generateLearningLicenseNo( @NotNull(message = "Id can not be null") Long userId,LicenseDTO licdto) {
+	public LicenseDTO generateLearningLicenseNo( @NotNull(message = "Id can not be null") Long userId,LicenseDTO licdto) {
 		LearningLicenseRegister license = mapper.map(licdto,LearningLicenseRegister.class);
 		
 		System.out.println(license.toString());
@@ -82,11 +82,12 @@ public class LicenseServiceImpl implements LicenseService {
 		license.setUser(user);
 		dao.save(license);
 		
-		return license.getLearningLicenseNo();
+		return mapper.map(dao.save(license), LicenseDTO.class);
 		}
-		else
-			return "Invalid: Age or AdharCard Number" ;
-			//return "redirect:/users/home";
+//		else
+//			return mapper.map(, null)
+//			//return "redirect:/users/home";
+		return licdto;
 	}
 	
 	

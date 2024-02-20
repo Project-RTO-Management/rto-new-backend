@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+//@ToString
 public class Address extends BaseEntity{
 	@Column(length = 50)
 	private String street;
