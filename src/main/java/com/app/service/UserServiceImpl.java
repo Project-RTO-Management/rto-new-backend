@@ -27,7 +27,7 @@ private ModelMapper mapper;
 public User authenticateUser(String em, String pass) {
 
 	User u=  userDao.findByEmailAndPassword(em, pass).orElseThrow();
-	System.out.println(u);
+	//System.out.println(u);
 	return u;
 	
 	
