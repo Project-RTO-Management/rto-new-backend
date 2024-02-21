@@ -35,4 +35,11 @@ public class ExamController {
 		return ResponseEntity.status(HttpStatus.OK).body(examService.getExamQueSet());
 		
 	}
+	
+	@GetMapping("/test/result/{userID}")
+	public ResponseEntity<?> getResultStatus(@PathVariable Long userID,@RequestBody String result){
+		return ResponseEntity.status(HttpStatus.OK).body(examService.getResult(userID,result));
+		
+	}
 }
+

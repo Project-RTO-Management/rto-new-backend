@@ -10,17 +10,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dao.ExamDataDao;
-import com.app.dao.LicenseRenewDao;
+import com.app.dao.LearnLicenseDao;
+import com.app.dao.PermanentLicenseDao;
 import com.app.dto.ExamDataDto;
 import com.app.entities.ExamData;
 import com.app.entities.LearningLicenseRegister;
+import com.app.entities.PermanentLicenseRegister;
 
 @Service
 @Transactional
 public class ExamServiceImpl implements ExamService {
-
 	@Autowired
-	private LicenseRenewDao licensedao;
+	private PermanentLicenseDao perdao;
+	@Autowired
+	private LearnLicenseDao licensedao;
 	@Autowired
 	private ExamDataDao examdao;
 	@Autowired
@@ -44,6 +47,20 @@ public class ExamServiceImpl implements ExamService {
 	        }
 	        return examDataDTOSet;
 	
+	}
+
+	@Override
+	public String getResult(Long userID, String result) {
+		LearningLicenseRegister lic = licensedao.findByUserId(userID)
+				.orElseThrow(() -> new NoSuchElementException());
+		lic.setResult(result);
+		licensedao.save(lic);
+		
+		PermanentLicenseRegister perlic = perdao.findByUserId(userID)
+				.orElseThrow(() -> new NoSuchElementException());
+		perlic.setResultStatus(result);
+		perdao.save(perlic);
+		return "Result saved";
 	}
 
 }

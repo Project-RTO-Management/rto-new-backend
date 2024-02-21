@@ -35,8 +35,8 @@ public class UserTest {
 		 */
 		List<User> list = List.of(
 				new User("Unnati Kurekar","Dnyaneshwar Kurekar","unnati@gmail.com","unnati@123","9689393813",Role.ADMIN,Gender.FEMALE,LocalDate.parse("1996-01-03") ),
-				new User("Akanksha Aage","Somnath Satpute","akanksha@gmail.com","akan@123","9689393492",Role.TRAFFICPOLICE,Gender.FEMALE,LocalDate.parse("1998-09-26") ),
-				new User("Pranav Bhandare","Milind Bhandare","pranav@gmail.com","prav@123","9689393681",Role.TRAFFICPOLICE,Gender.MALE,LocalDate.parse("1999-11-21") ),
+				new User("Akanksha Aage","Somnath Satpute","akanksha@gmail.com","akan@123","9689393492",Role.ADMIN,Gender.FEMALE,LocalDate.parse("1998-09-26") ),
+				new User("Pranav Bhandare","Milind Bhandare","pranav@gmail.com","prav@123","9689393681",Role.ADMIN,Gender.MALE,LocalDate.parse("1999-11-21") ),
 				new User("Manoj Kumar","Rahul Kumar","manoj@gmail.com","manoj@123","9689398513",Role.APPLICANT,Gender.MALE,LocalDate.parse("1986-11-29") )
 				);
 		
