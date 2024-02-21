@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.app.entities.LearningLicenseRegister;
 import com.app.entities.VehicleRegistration;
 
-public interface LicenseRenewDao  extends  JpaRepository<LearningLicenseRegister, Long>{
+public interface LearnLicenseDao  extends  JpaRepository<LearningLicenseRegister, Long>{
 
 	
 	

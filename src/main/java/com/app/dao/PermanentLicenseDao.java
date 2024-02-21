@@ -12,5 +12,5 @@ public interface PermanentLicenseDao  extends  JpaRepository<PermanentLicenseReg
 	
 	
 	//Optional<LearningLicenseRegister> findLicenseIdByUserId(Long userId);
-	Optional<LearningLicenseRegister> findByUserId(Long id);
+	Optional<PermanentLicenseRegister> findByUserId(Long id);
 }

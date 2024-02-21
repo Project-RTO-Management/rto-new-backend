@@ -10,4 +10,6 @@ public interface ExamService {
 	String applyForExam(Long userId);
 
 	Set<ExamDataDto> getExamQueSet();
+
+	String getResult(Long userID, String result);
 }

@@ -38,17 +38,15 @@ private Adminservice service;
 		return ResponseEntity.status(HttpStatus.OK).body(service.getLicenseApplicantList());
 		
 	}
-	
-	@PostMapping("license/approve")   //   /{licenseId}
-	public ResponseEntity<?> approveLicense(@RequestBody Long licId){
+	@PostMapping("license/approve/{licId}")   //   /{licenseId}
+	public ResponseEntity<?> approveLicense(@PathVariable Long licId){
 		return ResponseEntity.status(HttpStatus.OK).body(service.approveLic(licId));
 	}
 	
-	@PostMapping("license/reject")   //   /{licenseId}
-	public ResponseEntity<?> rejectLicense(@RequestBody Long licId){
+	@PostMapping("license/reject/{licId}")   //   /{licenseId}
+	public ResponseEntity<?> rejectLicense(@PathVariable Long licId){
 		return ResponseEntity.status(HttpStatus.OK).body(service.rejectLic(licId));
 	}
-	
 	@GetMapping("/vehiclereglist")
 	public ResponseEntity<?> getVehRegList(){
 		return ResponseEntity.status(HttpStatus.OK).body(service.getVehRegisterList());

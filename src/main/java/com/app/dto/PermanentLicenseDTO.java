@@ -22,8 +22,8 @@ public class PermanentLicenseDTO {
 	
 	@NotNull
 	private String learningLicNo;
-	@NotNull
-	private String resultStatus;
+//	@NotNull
+//	private String resultStatus;
 	
 	   @Hidden
 	   @JsonFormat(pattern = "yyyy-MM-dd",timezone = "UTC")

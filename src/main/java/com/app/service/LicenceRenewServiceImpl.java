@@ -7,7 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.dao.LicenseRenewDao;
+import com.app.dao.LearnLicenseDao;
 import com.app.dto.LicenseRenewDto;
 import com.app.dto.VehRegRenewDTO;
 import com.app.entities.LearningLicenseRegister;
@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 public class LicenceRenewServiceImpl implements LicenseRenewService{
 	
 	@Autowired
-	private LicenseRenewDao dao;
+	private LearnLicenseDao dao;
 	
 	@Autowired
 	private ModelMapper mapper;
