@@ -46,6 +46,11 @@ private Timestamp dateOfApply;
 @Column(columnDefinition = "varchar(20) default 'NO'")
 private String approve;
 
+@Column(columnDefinition = "varchar(20) default 'NO'")
+private String RenewalApprove;
+
+
+
 @ManyToOne
 @JoinColumn(name="user_id")
 private User user;

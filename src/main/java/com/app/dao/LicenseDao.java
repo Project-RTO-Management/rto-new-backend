@@ -6,6 +6,6 @@ import com.app.entities.License;
 
 public interface LicenseDao extends JpaRepository<License, Long>{
 	License findByUserId(Long id);
-	
+	License findByLicenseNo(String LicenseNo);
 	
 }

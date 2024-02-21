@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +31,8 @@ import com.app.service.UserService;
 public class UserController {
     @Autowired
 	private UserService userService;
+    
+    
     
     
     @PostMapping("/register")
@@ -58,10 +61,10 @@ public class UserController {
 			// role based authorization
 			if (user.getRole() == Role.APPLICANT) {
 				// user role , redirect to user details
-				return ResponseEntity.ok(user.getId()+","+user.getUserName());
+				return ResponseEntity.ok(user.getId()+","+user.getUserName()+","+user.getRole());
 			}
 			// => admin, trafficpolice role --redirect to dept list page
-			return ResponseEntity.ok(user.getId()+","+user.getUserName());
+			return ResponseEntity.ok(user.getId()+","+user.getUserName()+","+user.getRole());
 
 		} catch (Exception e) {
 			System.out.println("err in handler " + e);
@@ -82,4 +85,6 @@ public class UserController {
 			session.invalidate();
 			return "/users/logout";
 		}
+	
+	
 }

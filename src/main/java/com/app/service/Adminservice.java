@@ -20,6 +20,10 @@ public interface Adminservice {
 
 	UserShowDto getAdminDetailsById(@NotNull(message = "UserId can not be null") Long userId);
 
+	String approveRenewLic(Long licId);
+
+	String rejectRenewLic(Long licId);
+
 		
 
 }

@@ -44,6 +44,8 @@ private Adminservice service;
 		return ResponseEntity.status(HttpStatus.OK).body(service.approveLic(licId));
 	}
 	
+	
+	
 	@PostMapping("license/reject")   //   /{licenseId}
 	public ResponseEntity<?> rejectLicense(@RequestBody Long licId){
 		return ResponseEntity.status(HttpStatus.OK).body(service.rejectLic(licId));
@@ -54,4 +56,19 @@ private Adminservice service;
 		return ResponseEntity.status(HttpStatus.OK).body(service.getVehRegisterList());
 		
 	}
+	
+	//renew License
+	
+	@PostMapping("RenewLicense/approve")   //   /{licenseId}
+	public ResponseEntity<?> approveRenewLicense(@RequestBody Long licId){
+		return ResponseEntity.status(HttpStatus.OK).body(service.approveRenewLic(licId));
+	}
+	
+	
+	
+	@PostMapping("RenewLicense/reject")   //   /{licenseId}
+	public ResponseEntity<?> rejectRenewLicense(@RequestBody Long licId){
+		return ResponseEntity.status(HttpStatus.OK).body(service.rejectRenewLic(licId));
+	}
+	
 }

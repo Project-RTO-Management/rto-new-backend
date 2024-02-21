@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.dao.ExamDataDao;
-import com.app.dao.LicenseRenewDao;
+import com.app.dao.LearningLicenseDao;
 import com.app.dto.ExamDataDto;
 import com.app.entities.ExamData;
 import com.app.entities.LearningLicenseRegister;
@@ -20,7 +20,7 @@ import com.app.entities.LearningLicenseRegister;
 public class ExamServiceImpl implements ExamService {
 
 	@Autowired
-	private LicenseRenewDao licensedao;
+	private LearningLicenseDao licensedao;
 	@Autowired
 	private ExamDataDao examdao;
 	@Autowired

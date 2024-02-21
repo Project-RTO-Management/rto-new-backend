@@ -100,4 +100,27 @@ private ModelMapper mapper;
 		return "Application for Permanent License is Rejected";
 	}
 	
+	
+	
+	
+	@Override
+	public String approveRenewLic(Long licId) {
+		License license =licdao.findById(licId).orElseThrow(() -> new NoSuchElementException());
+		license.setRenewalApprove("Approved");
+		
+		System.out.println(license.getLicenseNo());
+		
+		licdao.save(license);
+		return "Application for Permanent License is Approved";
+		
+	}
+	@Override
+	public String rejectRenewLic(Long licId) {
+		License license =licdao.findById(licId).orElseThrow(() -> new NoSuchElementException());
+		license.setRenewalApprove("Rejected");
+	
+		licdao.save(license);
+		return "Application for Permanent License is Rejected";
+	}
+	
 }

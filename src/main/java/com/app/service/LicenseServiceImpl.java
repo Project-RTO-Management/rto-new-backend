@@ -15,7 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.dao.LicenseRenewDao;
+import com.app.dao.LearningLicenseDao;
 import com.app.dao.LicenseDao;
 import com.app.dao.PermanentLicenseDao;
 import com.app.dao.UserDao;
@@ -37,7 +37,7 @@ public class LicenseServiceImpl implements LicenseService {
 	@Autowired
 	private UserDao userDao;
 	@Autowired
-	private LicenseRenewDao dao;
+	private LearningLicenseDao dao;
 	@Autowired
 	private PermanentLicenseDao perdao;
 	@Autowired

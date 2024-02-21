@@ -14,5 +14,9 @@ public interface UserService {
 
 	UserShowDto getUserDetailsById(@NotNull(message = "UserId can not be null") @NotNull(message = "UserId can not be null") Long userId);
 
+	
+
+	
+
 
 }

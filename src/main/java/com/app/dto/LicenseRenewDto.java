@@ -29,7 +29,7 @@ public class LicenseRenewDto {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Long id;
 
-	private String learningLicenseNo;
+	private String LicenseNo;
 
      @Hidden
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
@@ -39,8 +39,8 @@ public class LicenseRenewDto {
 		return id;
 	}
 
-	public String getLearningLicenseNo() {
-		return learningLicenseNo;
+	public String getLicenseNo() {
+		return LicenseNo;
 	}
 
 	public Timestamp getNewDateOfAppl() {

@@ -8,7 +8,7 @@ import com.app.entities.LearningLicenseRegister;
 import com.app.entities.License;
 import com.app.entities.VehicleRegistration;
 
-public interface LicenseRenewDao  extends  JpaRepository<LearningLicenseRegister, Long>{
+public interface LearningLicenseDao  extends  JpaRepository<LearningLicenseRegister, Long>{
 
 	
 	
