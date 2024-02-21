@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -47,10 +49,8 @@ public class LearningLicenseRegister extends BaseEntity{
 	private Timestamp dateOfAppl=Timestamp.valueOf(LocalDateTime.now());
 	@Column(length = 50,unique = true)
 	private String learningLicenseNo;
-	
-	@OneToOne
-	@JoinColumn(name="result_id")
-	private Result result;
+	@Column(length = 20)
+	private String result;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id",nullable = false)
