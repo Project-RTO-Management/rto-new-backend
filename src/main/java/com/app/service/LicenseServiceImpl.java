@@ -89,8 +89,8 @@ public class LicenseServiceImpl implements LicenseService {
 	public String applyForParmanentLicense(@NotNull(message = "Learning license can not be null") Long userId,
 			PermanentLicenseDTO perdto) {
 		PermanentLicenseRegister license = mapper.map(perdto, PermanentLicenseRegister.class);
-		System.out.println(license.getLearningLicNo());
-		System.out.println(license.getResultStatus());
+//		System.out.println(license.getLearningLicNo());
+		System.out.println(license);
 	  User user = userDao.findById(userId).orElseThrow(()-> new NoSuchElementException("User not found"));
 		LearningLicenseRegister learn = dao.findByUserId(userId).orElseThrow(()-> new NoSuchElementException("Learning license not found"));
 	  System.out.println(learn.getLearningLicenseNo().toString());
@@ -99,12 +99,14 @@ public class LicenseServiceImpl implements LicenseService {
 	
 	  if(license.getLearningLicNo().trim().equalsIgnoreCase(learn.getLearningLicenseNo().toString().trim())) {
 		
-		   if(learn.getResult().equalsIgnoreCase("PASS")) {
+//		   if(learn.getResult().equalsIgnoreCaseeCase("PASS")) {
 		  System.out.println(learn.getResult().toString());
-		//  if(license.getResultStatus().equalsIgnoreCase("PASS")) {
+		  if(learn.getResult().equalsIgnoreCase("PASS")) {
 			  license.setLearn(learn);
 			  license.setUser(user);
+			  license.setResultStatus(learn.getResult());
 			  perdao.save(license);
+			  
 			  
 				//to save data in license table for admin view
 			  License lic =new License();
