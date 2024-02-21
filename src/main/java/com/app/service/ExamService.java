@@ -12,5 +12,5 @@ public interface ExamService {
 
 	Set<ExamDataDto> getExamQueSet();
 
-	String getResult(Long userID, int result);
+	String getResult(Long userID, String status);
 }

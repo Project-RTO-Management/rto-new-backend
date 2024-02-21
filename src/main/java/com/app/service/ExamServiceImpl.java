@@ -51,22 +51,21 @@ public class ExamServiceImpl implements ExamService {
 
 	
 	@Override
-	public String getResult(Long userId, int result) {
+	public String getResult(Long userId, String status) {
 	    LearningLicenseRegister lic = licensedao.findByUserId(userId)
 	            .orElseThrow(() -> new NoSuchElementException());
 
-	    if (result == 0) {
-	        lic.setResult("Fail");
-	    } else {
-	        lic.setResult("Pass");
-	    }
+	   
+	    
+		lic.setResult(status);
+		licensedao.save(lic);
 
-	    licensedao.save(lic);
+//	    licensedao.save(lic);
 
-	    PermanentLicenseRegister perlic = perdao.findByUserId(userId)
-	            .orElseThrow(() -> new NoSuchElementException());
-	    perlic.setResultStatus(lic.getResult());
-	    perdao.save(perlic);
+//	    PermanentLicenseRegister perlic = perdao.findByUserId(userId)
+//	            .orElseThrow(() -> new NoSuchElementException());
+//	    perlic.setResultStatus(lic.getResult());
+//	    perdao.save(perlic);
 
 	    return lic.getResult();
 	}

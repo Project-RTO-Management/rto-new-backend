@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.ResultDTO;
 import com.app.service.ExamService;
 
 @RestController
@@ -35,9 +36,9 @@ public class ExamController {
 		
 	}
 	
-	  @PostMapping("/test/result/{userId}")
-	    public ResponseEntity<?> getResultStatus(@PathVariable Long userId, @RequestBody int result) {
-	        return ResponseEntity.status(HttpStatus.OK).body(examService.getResult(userId, result));
+	  @PostMapping("/test/result/{userId}/{status}")
+	    public ResponseEntity<?> getResultStatus(@PathVariable Long userId, @PathVariable String status) {
+	        return ResponseEntity.status(HttpStatus.OK).body(examService.getResult(userId, status));
 	    }
 	
 //	@PostMapping("/test/result/{userID}")
