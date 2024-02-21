@@ -23,6 +23,6 @@ public class ExamDataDto {
 	private String optD;
 	
 	
-	@JsonProperty(access =Access.WRITE_ONLY)
+	@JsonProperty(access =Access.READ_ONLY)
 	private Answer correctAns;
 }

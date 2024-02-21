@@ -13,6 +13,7 @@ import com.app.dao.ExamDataDao;
 import com.app.dao.LearnLicenseDao;
 import com.app.dao.PermanentLicenseDao;
 import com.app.dto.ExamDataDto;
+import com.app.dto.ResultDTO;
 import com.app.entities.ExamData;
 import com.app.entities.LearningLicenseRegister;
 import com.app.entities.PermanentLicenseRegister;
@@ -31,36 +32,44 @@ public class ExamServiceImpl implements ExamService {
 
 	@Override
 	public String applyForExam(Long userId) {
-			LearningLicenseRegister lic = licensedao.findByUserId(userId)
-				.orElseThrow(() -> new NoSuchElementException());
+		LearningLicenseRegister lic = licensedao.findByUserId(userId).orElseThrow(() -> new NoSuchElementException());
 		System.out.println(lic.getLearningLicenseNo());
-	
-			return "You can start exam.";
+
+		return "You can start exam.";
 	}
 
 	@Override
 	public Set<ExamDataDto> getExamQueSet() {
-		Set<ExamData> exam=	examdao.findRandom10();
-		 Set<ExamDataDto> examDataDTOSet = new HashSet<>();
-	        for (ExamData examData : exam) {
-	            examDataDTOSet.add(mapper.map(examData, ExamDataDto.class));
-	        }
-	        return examDataDTOSet;
-	
+		Set<ExamData> exam = examdao.findRandom10();
+		Set<ExamDataDto> examDataDTOSet = new HashSet<>();
+		for (ExamData examData : exam) {
+			examDataDTOSet.add(mapper.map(examData, ExamDataDto.class));
+		}
+		return examDataDTOSet;
+
 	}
 
+	
 	@Override
-	public String getResult(Long userID, String result) {
-		LearningLicenseRegister lic = licensedao.findByUserId(userID)
-				.orElseThrow(() -> new NoSuchElementException());
-		lic.setResult(result);
-		licensedao.save(lic);
-		
-		PermanentLicenseRegister perlic = perdao.findByUserId(userID)
-				.orElseThrow(() -> new NoSuchElementException());
-		perlic.setResultStatus(result);
-		perdao.save(perlic);
-		return "Result saved";
+	public String getResult(Long userId, int result) {
+	    LearningLicenseRegister lic = licensedao.findByUserId(userId)
+	            .orElseThrow(() -> new NoSuchElementException());
+
+	    if (result == 0) {
+	        lic.setResult("Fail");
+	    } else {
+	        lic.setResult("Pass");
+	    }
+
+	    licensedao.save(lic);
+
+	    PermanentLicenseRegister perlic = perdao.findByUserId(userId)
+	            .orElseThrow(() -> new NoSuchElementException());
+	    perlic.setResultStatus(lic.getResult());
+	    perdao.save(perlic);
+
+	    return lic.getResult();
 	}
+
 
 }

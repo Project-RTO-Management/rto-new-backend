@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.service.ExamService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/exam")
@@ -36,10 +35,16 @@ public class ExamController {
 		
 	}
 	
-	@GetMapping("/test/result/{userID}")
-	public ResponseEntity<?> getResultStatus(@PathVariable Long userID,@RequestBody String result){
-		return ResponseEntity.status(HttpStatus.OK).body(examService.getResult(userID,result));
-		
-	}
+	  @PostMapping("/test/result/{userId}")
+	    public ResponseEntity<?> getResultStatus(@PathVariable Long userId, @RequestBody int result) {
+	        return ResponseEntity.status(HttpStatus.OK).body(examService.getResult(userId, result));
+	    }
+	
+//	@PostMapping("/test/result/{userID}")
+//	public ResponseEntity<?> getResultStatus(@PathVariable Long userID,@RequestBody ResultDTO resultDto){
+//		System.out.println("result:"+resultDto.getResult().toString());
+//		return ResponseEntity.status(HttpStatus.OK).body(examService.getResult(userID,resultDto));
+//		
+//	}
 }
 

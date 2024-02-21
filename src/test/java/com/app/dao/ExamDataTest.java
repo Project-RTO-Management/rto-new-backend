@@ -15,7 +15,7 @@ import com.app.entities.User;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-//@Rollback(false)
+@Rollback(false)
 public class ExamDataTest {
 	@Autowired
 	private ExamDataDao dao;
